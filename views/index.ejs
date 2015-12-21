@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/javascripts/app.js"></script>
+</head>
+<body>
+    <div class="container" ng-controller="TodoController">
+        <h1>Total Todos: ({{remaining()}} of {{todos.length}} remaining)</h1>
+        <ul class="list-unstyled">
+            <li ng-repeat="todo in todos" class="done-{{todo.completed}}"><input ng-change="update($index)" ng-model="todo.completed" type="checkbox"/> <span>{{todo.name}}</span></li>
+        </ul>
+        <form ng-submit="addTodo()" class="form-inline" style="margin-bottom: 10px">
+            <input ng-model="name" type="text" class="form-control" placeholder="Add new todo here"/> <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i>Add</button>
+        </form>
+        <button type="button" class="btn btn-lg" ng-click="clearCompleted()"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Clear Completed</button>
+    </div>
+</body>
+</html>
